@@ -42,3 +42,11 @@ bookinfo on 443 at /productpage
 host: bookinfo.glootest.com, bookinfo-local.glootest.com
 - this route has no limits
 - log4j WAF policy enabled on this route
+
+# collaboration tools
+Collaboration tools workspaces has the following apps
+drawio
+etherpad
+etherdraw
+
+more info to come..
