@@ -18,8 +18,6 @@ spec:
       matchers:
       - uri:
           exact: /get
-      - uri:
-          prefix: /anything
       forwardTo:
         destinations:
         - ref:
@@ -29,4 +27,3 @@ spec:
             number: 8000
       labels:
         ratelimited: "true"
-        waf: "true"

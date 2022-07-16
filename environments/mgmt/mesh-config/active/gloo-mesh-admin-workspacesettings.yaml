@@ -12,9 +12,6 @@ spec:
     - kind: SERVICE
       labels:
         app.kubernetes.io/name: grafana
-    - kind: SERVICE
-      labels:
-        app: gloo-mesh-ui
     - kind: ALL
       labels:
         expose: "true"

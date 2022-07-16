@@ -17,7 +17,6 @@ spec:
         licenseKey: eyJleHAiOjE2NTkxOTU4OTUsImlhdCI6MTY1NTczOTg5NSwiayI6IjBuK2J1dyIsImx0IjoidHJpYWwiLCJwcm9kdWN0IjoiZ2xvbyJ9.Wnc1FVMhPZrAMMX4VGc6VsQ-9gsNfN_5fHkloR8rhf0
         mgmtClusterName: mgmt
         glooMeshMgmtServer:
-          serviceType: ClusterIP
           relay:
             disableCa: true
             disableCaCertGeneration: true
@@ -26,7 +25,6 @@ spec:
           ports:
             healthcheck: 8091
         glooMeshUi:
-          serviceType: ClusterIP
           enabled: true
           deploymentOverrides:
             spec:
