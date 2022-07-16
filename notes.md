@@ -1,32 +1,44 @@
-Summary:
-1 mgmt cluster only
-- Since Gloo Mesh and the Gloo Mesh Agent are in the same cluster, we can configure both to communicate over ClusterIP
+# Summary:
+1 mgmt / 2 leaf
 gloo mesh 2.0.9
-istio 1.13.4 with revisions
-north/south and east/west gateways
-cert manager deployed in cert-manager namespace
+All clusters have istio 1.13.4 with revisions
+All clusters have north/south and east/west gateways
+cert manager deployed in cert-manager namespace on mgmt cluster
 
-Note:
-All route tables are using wildcard "*" for their hostnames which makes testing simpler but can result in routes clashing
-
-mgmt ingress exposing:
-
-argocd on port 80
+## mgmt ingress exposing:
+argocd on port 80 at /argo
 
 gloo mesh on port 443 
 
 httpbin on 80 at /get
 - this route is rate limited at 20 req/sec
 - when you are rate limited, the transformationfilter provides a pretty message
-- log4j WAF policy enabled on this route
+- log4shell waf policy enabled
 
 httpbin on 443 at /get
 - this route has no limits
-- log4j WAF policy enabled on this route
-
+- log4shell waf policy enabled
 grafana on port 443 at /grafana
+
+## cluster1 ingress exposing:
+argocd on port 80 at /argo
 
 bookinfo on 80 at /productpage
 - this route is rate limited at 15 req/sec
 - when you are rate limited, the transformationfilter provides a pretty message
-- log4j WAF policy enabled on this route
+- log4shell waf policy enabled
+
+bookinfo on 443 at /productpage
+- this route has no limits
+- log4shell waf policy enabled
+
+## cluster2 ingress exposing:
+argocd on port 80 at /argo
+
+bookinfo on 80 at /productpage
+- this route has no limits
+- log4shell waf policy enabled
+
+bookinfo on 443 at /productpage
+- this route has no limits
+- log4shell waf policy enabled
