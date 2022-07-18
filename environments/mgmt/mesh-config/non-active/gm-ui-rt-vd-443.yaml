@@ -7,7 +7,7 @@ metadata:
   namespace: gloo-mesh
 spec:
   hosts:
-  - '*'
+  - 'gmui.kapoozi.com'
   http:
   - forwardTo:
       destinations:
@@ -30,6 +30,8 @@ spec:
         prefix: /gateways
     - uri:
         prefix: /policies
+    - uri:
+          prefix: /oidc-callback
   virtualGateways:
   - cluster: mgmt
     name: mgmt-north-south-gw-443

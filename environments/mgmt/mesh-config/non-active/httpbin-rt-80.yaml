@@ -7,7 +7,7 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - '*'
+    - 'httpbin.kapoozi.com'
   virtualGateways:
     - name: mgmt-north-south-gw-80
       namespace: istio-gateways
@@ -29,4 +29,3 @@ spec:
             number: 8000
       labels:
         ratelimited: "true"
-        waf: "true"

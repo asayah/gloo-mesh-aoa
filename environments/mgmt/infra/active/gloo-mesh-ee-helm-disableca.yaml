@@ -28,6 +28,20 @@ spec:
         glooMeshUi:
           serviceType: ClusterIP
           enabled: true
+          auth:
+            enabled: true
+            backend: oidc
+            oidc: 
+              # From the OIDC provider
+              clientId: "0oa5h0th99hv7NF4g5d7"
+              # From the OIDC provider. To be base64 encoded and stored as a kubernetes secret.
+              clientSecret: "YOmF58rBecKixjgVZ0T8Kg9dpr4lEkEpM5z9Vu04"
+              # Name for generated secret
+              clientSecretName: dashboard
+              # The issuer URL from the OIDC provider, usually something like 'https://<domain>.<provider_url>/'.
+              issuerUrl: https://dev-22653158.okta.com/oauth2/default
+              # The URL that the UI for the OIDC app is available at, from the DNS and other ingress settings that expose the OIDC app UI service.
+              appUrl: "https://gmui.kapoozi.com"
           deploymentOverrides:
             spec:
               template:

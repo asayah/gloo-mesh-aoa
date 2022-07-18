@@ -3,31 +3,25 @@ kind: RouteTable
 metadata:
   labels:
     expose: "true"
-  name: grafana-ui-443
-  namespace: gloo-mesh
+  name: mgmt-argo-rt-80
+  namespace: argocd
 spec:
   hosts:
-  - 'grafana.kapoozi.com'
+  - 'argocd.kapoozi.com'
   http:
   - forwardTo:
       destinations:
       - port:
-          number: 3000
+          number: 80
         ref:
           cluster: mgmt
-          name: grafana
-          namespace: istio-system
+          name: argocd-server
+          namespace: argocd
     labels:
       waf: "true"
-      oauth: "true"
-    name: grafana-ui
-    matchers:
-      - uri:
-          prefix: /grafana
-      - uri:
-          prefix: /callback
+    name: argocd
   virtualGateways:
   - cluster: mgmt
-    name: mgmt-north-south-gw-443
+    name: mgmt-north-south-gw-80
     namespace: istio-gateways
   workloadSelectors: []
