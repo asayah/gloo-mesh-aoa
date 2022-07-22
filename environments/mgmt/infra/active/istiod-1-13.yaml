@@ -24,8 +24,8 @@ spec:
           multiCluster:
             clusterName: mgmt
           network: network1
-          hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.13.4-solo
+          hub: us-docker.pkg.dev/gloo-mesh/istio-a9797008feb0
+          tag: 1.13.4-arm
         meshConfig:
           trustDomain: mgmt
           accessLogFile: /dev/stdout
