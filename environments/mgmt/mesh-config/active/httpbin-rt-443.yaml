@@ -7,7 +7,7 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - '*'
+    - 'httpbin.asayah.solo.io'
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways
@@ -17,9 +17,7 @@ spec:
     - name: httpbin
       matchers:
       - uri:
-          exact: /get
-      - uri:
-          prefix: /anything
+          prefix: /
       forwardTo:
         destinations:
         - ref:
@@ -28,4 +26,4 @@ spec:
           port:
             number: 8000
       labels:
-        waf: "true"
+        oidc-httpbin: "true"

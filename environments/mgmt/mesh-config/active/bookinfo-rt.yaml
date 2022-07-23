@@ -7,7 +7,7 @@ metadata:
   namespace: bookinfo-frontends
 spec:
   hosts:
-  - '*'
+  - 'productpage.asayah.solo.io'
   http:
   - forwardTo:
       destinations:
@@ -17,22 +17,13 @@ spec:
           name: productpage
           namespace: bookinfo-frontends
     labels:
-      waf: "true"
-      ratelimited: "true"
+      oidc-httpbin: "true"
     matchers:
     - uri:
-        exact: /productpage
-    - uri:
-        prefix: /static
-    - uri:
-        exact: /login
-    - uri:
-        exact: /logout
-    - uri:
-        prefix: /api/v1/products
+        prefix: /
     name: productpage
   virtualGateways:
   - cluster: cluster1
-    name: mgmt-north-south-gw-80
+    name: mgmt-north-south-gw-443
     namespace: istio-gateways
   workloadSelectors: []
