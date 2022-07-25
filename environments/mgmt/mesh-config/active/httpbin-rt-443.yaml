@@ -26,4 +26,4 @@ spec:
           port:
             number: 8000
       labels:
-        oidc-httpbin: "true"
+        oauth: "httpbin"

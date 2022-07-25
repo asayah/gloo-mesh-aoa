@@ -17,7 +17,7 @@ spec:
           name: productpage
           namespace: bookinfo-frontends
     labels:
-      oidc-httpbin: "true"
+      oauth: "productpage"
     matchers:
     - uri:
         prefix: /
