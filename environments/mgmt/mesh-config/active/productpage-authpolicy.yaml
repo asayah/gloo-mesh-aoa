@@ -1,0 +1,36 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: productpage
+  namespace: bookinfo-frontends
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        oauth: "productpage"
+  config:
+    server:
+      name: ext-auth-server
+      namespace: bookinfo-frontends
+      cluster: mgmt
+    glooAuth:
+      configs:
+      - oauth2:
+          oidcAuthorizationCode:
+            appUrl: https://productpage.asayah.solo.io
+            callbackPath: /callback
+            clientId: 0oa5x86ztewewLaer5d7
+            clientSecretRef:
+              name: oauth-productpage
+              namespace: bookinfo-frontends
+            issuerUrl: "https://dev-44147543.okta.com/oauth2/default"
+            session:
+              failOnFetchFailure: true
+              redis:
+                cookieName: productpage-session
+                options:
+                  host: redis:6379
+            scopes:
+            - email
+            headers:
+              idTokenHeader: jwt
